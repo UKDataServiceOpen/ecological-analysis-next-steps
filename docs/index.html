@@ -154,13 +154,11 @@ window.Quarto = {
    
   <ul class="collapse">
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#from-diagnostics-to-modelling" id="toc-from-diagnostics-to-modelling" class="nav-link" data-scroll-target="#from-diagnostics-to-modelling">From diagnostics to modelling</a></li>
-  <li><a href="#linear-regression-as-a-starting-point" id="toc-linear-regression-as-a-starting-point" class="nav-link" data-scroll-target="#linear-regression-as-a-starting-point">Linear regression as a starting point</a></li>
-  <li><a href="#allowing-relationships-to-vary-across-space" id="toc-allowing-relationships-to-vary-across-space" class="nav-link" data-scroll-target="#allowing-relationships-to-vary-across-space">Allowing relationships to vary across space</a></li>
+  <li><a href="#why-regression-is-the-next-step" id="toc-why-regression-is-the-next-step" class="nav-link" data-scroll-target="#why-regression-is-the-next-step">Why regression is the next step</a></li>
+  <li><a href="#when-space-matters-in-regression" id="toc-when-space-matters-in-regression" class="nav-link" data-scroll-target="#when-space-matters-in-regression">When space matters in regression</a></li>
   <li><a href="#diagnosing-spatial-autocorrelation-in-regression-residuals" id="toc-diagnosing-spatial-autocorrelation-in-regression-residuals" class="nav-link" data-scroll-target="#diagnosing-spatial-autocorrelation-in-regression-residuals">Diagnosing spatial autocorrelation in regression residuals</a></li>
-  <li><a href="#spatial-lag-model" id="toc-spatial-lag-model" class="nav-link" data-scroll-target="#spatial-lag-model">Spatial lag model</a></li>
-  <li><a href="#spatial-error-model" id="toc-spatial-error-model" class="nav-link" data-scroll-target="#spatial-error-model">Spatial error model</a></li>
-  <li><a href="#interpreting-rho-and-lambda" id="toc-interpreting-rho-and-lambda" class="nav-link" data-scroll-target="#interpreting-rho-and-lambda">Interpreting rho and lambda</a></li>
+  <li><a href="#modelling-spatial-dependence" id="toc-modelling-spatial-dependence" class="nav-link" data-scroll-target="#modelling-spatial-dependence">Modelling spatial dependence</a></li>
+  <li><a href="#choosing-an-appropriate-model" id="toc-choosing-an-appropriate-model" class="nav-link" data-scroll-target="#choosing-an-appropriate-model">Choosing an appropriate model</a></li>
   <li><a href="#choosing-between-spatial-lag-and-spatial-error-models" id="toc-choosing-between-spatial-lag-and-spatial-error-models" class="nav-link" data-scroll-target="#choosing-between-spatial-lag-and-spatial-error-models">Choosing between spatial lag and spatial error models</a></li>
   <li><a href="#a-practical-decision-rule" id="toc-a-practical-decision-rule" class="nav-link" data-scroll-target="#a-practical-decision-rule">A practical decision rule</a></li>
   <li><a href="#looking-ahead" id="toc-looking-ahead" class="nav-link" data-scroll-target="#looking-ahead">Looking ahead</a></li>
@@ -211,8 +209,10 @@ window.Quarto = {
 <p>What should we do next when spatial autocorrelation is present?</p>
 <p>This page introduces regression as a next step in ecological analysis. Its purpose is not to teach software implementation, but to help you understand how regression models can be adapted to spatial data, and how analysts decide which type of spatial model is appropriate.</p>
 </section>
-<section id="from-diagnostics-to-modelling" class="level2">
-<h2 class="anchored" data-anchor-id="from-diagnostics-to-modelling">From diagnostics to modelling</h2>
+<section id="why-regression-is-the-next-step" class="level2">
+<h2 class="anchored" data-anchor-id="why-regression-is-the-next-step">Why regression is the next step</h2>
+<section id="from-diagnostics-to-modelling" class="level3">
+<h3 class="anchored" data-anchor-id="from-diagnostics-to-modelling">From diagnostics to modelling</h3>
 <p>Earlier in the module, you learned that spatial autocorrelation violates key assumptions of standard regression models. In particular, when neighbouring areas tend to have similar values, the assumption that observations are independent no longer holds. As discussed in the section on spatial autocorrelation, this can lead to misleading statistical inference, such as inflated or deflated test statistics.</p>
 <p>Regression modelling therefore comes after spatial diagnostics.</p>
 <p>A typical analytical workflow is:</p>
@@ -223,8 +223,8 @@ window.Quarto = {
 </ol>
 <p>The models introduced below are designed to respond directly to the issues identified at the final step.</p>
 </section>
-<section id="linear-regression-as-a-starting-point" class="level2">
-<h2 class="anchored" data-anchor-id="linear-regression-as-a-starting-point">Linear regression as a starting point</h2>
+<section id="linear-regression-as-a-starting-point" class="level3">
+<h3 class="anchored" data-anchor-id="linear-regression-as-a-starting-point">Linear regression as a starting point</h3>
 <p>A conventional linear regression model relates an outcome variable to one or more explanatory variables:</p>
 <p><span class="math display">\[
 y = b_0 + b_1 x_1 + b_2 x_2 + \dots + b_n x_n + e
@@ -232,8 +232,11 @@ y = b_0 + b_1 x_1 + b_2 x_2 + \dots + b_n x_n + e
 <p>where the error term captures unexplained variation.</p>
 <p>In ecological analysis, this model is often used as a baseline. It provides an initial description of relationships between area level characteristics such as employment rates, housing conditions, or health outcomes. However, as shown earlier in the module, this model assumes that observations are independent across space, an assumption that is rarely satisfied with geographical data.</p>
 </section>
-<section id="allowing-relationships-to-vary-across-space" class="level2">
-<h2 class="anchored" data-anchor-id="allowing-relationships-to-vary-across-space">Allowing relationships to vary across space</h2>
+</section>
+<section id="when-space-matters-in-regression" class="level2">
+<h2 class="anchored" data-anchor-id="when-space-matters-in-regression">When space matters in regression</h2>
+<section id="allowing-relationships-to-vary-across-space" class="level3">
+<h3 class="anchored" data-anchor-id="allowing-relationships-to-vary-across-space">Allowing relationships to vary across space</h3>
 <p>One reason standard regression may perform poorly with spatial data is that relationships can differ from place to place. The effect of an explanatory variable may not be constant across all areas.</p>
 <p>Conceptually, this can be expressed by allowing regression coefficients to vary by spatial unit:</p>
 <p><span class="math display">\[
@@ -241,6 +244,7 @@ y_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \dots + b_{ni} x_{ni} + e_i
 \]</span></p>
 <p>This reflects spatial heterogeneity, a concept introduced earlier in the module. For example, the relationship between health outcomes and access to services may differ between urban and rural areas, or between regions with different socioeconomic contexts.</p>
 <p>In practice, analysts may choose to allow the intercept to vary across space or explore models that explicitly account for spatial structure rather than assuming uniform effects.</p>
+</section>
 </section>
 <section id="diagnosing-spatial-autocorrelation-in-regression-residuals" class="level2">
 <h2 class="anchored" data-anchor-id="diagnosing-spatial-autocorrelation-in-regression-residuals">Diagnosing spatial autocorrelation in regression residuals</h2>
@@ -252,20 +256,22 @@ y_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \dots + b_{ni} x_{ni} + e_i
 </ul>
 <p>A significant Moran’s I on the residuals indicates that the regression model has not fully accounted for spatial dependence. At this point, spatial regression models provide a way forward.</p>
 </section>
-<section id="spatial-lag-model" class="level2">
-<h2 class="anchored" data-anchor-id="spatial-lag-model">Spatial lag model</h2>
+<section id="modelling-spatial-dependence" class="level2">
+<h2 class="anchored" data-anchor-id="modelling-spatial-dependence">Modelling spatial dependence</h2>
+<section id="spatial-lag-model" class="level3">
+<h3 class="anchored" data-anchor-id="spatial-lag-model">Spatial lag model</h3>
 <p>A spatial lag model addresses spatial dependence by recognising that outcomes in one area may be directly influenced by outcomes in neighbouring areas.</p>
 <p>In this model, a spatially lagged version of the dependent variable is included as a predictor. The strength of this spatial dependence is captured by a parameter commonly referred to as rho (ρ).</p>
 <p>Intuitively, a spatial lag model reflects situations where what happens in one place influences what happens nearby. Examples might include housing markets, diffusion of innovation, or contagious social or health processes.</p>
 </section>
-<section id="spatial-error-model" class="level2">
-<h2 class="anchored" data-anchor-id="spatial-error-model">Spatial error model</h2>
+<section id="spatial-error-model" class="level3">
+<h3 class="anchored" data-anchor-id="spatial-error-model">Spatial error model</h3>
 <p>A spatial error model takes a different approach. Rather than modelling direct influence between neighbouring outcomes, it assumes that unobserved spatial processes affect multiple areas simultaneously.</p>
 <p>This model separates the error term into a spatially correlated component and a spatially uncorrelated component. The strength of the spatially correlated error is captured by lambda (λ).</p>
 <p>Conceptually, a spatial error model is appropriate when important explanatory factors are missing from the model and these omitted factors are spatially clustered. In this case, spatial dependence appears in the residuals rather than in the outcome itself.</p>
 </section>
-<section id="interpreting-rho-and-lambda" class="level2">
-<h2 class="anchored" data-anchor-id="interpreting-rho-and-lambda">Interpreting rho and lambda</h2>
+<section id="interpreting-rho-and-lambda" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-rho-and-lambda">Interpreting rho and lambda</h3>
 <p>Both rho (ρ) and lambda (λ) are typically estimated using maximum likelihood methods.</p>
 <p>From an interpretative perspective:</p>
 <ul>
@@ -274,6 +280,10 @@ y_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \dots + b_{ni} x_{ni} + e_i
 <li>when both parameters are effectively zero, a standard regression model may be sufficient</li>
 </ul>
 <p>This interpretation connects directly back to the diagnostic logic introduced earlier in the module.</p>
+</section>
+</section>
+<section id="choosing-an-appropriate-model" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-an-appropriate-model">Choosing an appropriate model</h2>
 </section>
 <section id="choosing-between-spatial-lag-and-spatial-error-models" class="level2">
 <h2 class="anchored" data-anchor-id="choosing-between-spatial-lag-and-spatial-error-models">Choosing between spatial lag and spatial error models</h2>
