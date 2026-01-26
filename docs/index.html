@@ -113,7 +113,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">Regression – Ecological analysis</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">Introduction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -136,7 +136,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Regression – Ecological analysis</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Introduction</span></a>
   </div>
 </li>
     </ul>
@@ -179,11 +179,12 @@ window.Quarto = {
 </header>
 
 
-<section id="regression-ecological-analysis" class="level1">
-<h1>Regression – Ecological analysis</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>In the previous sections of this module, you explored how spatial patterns emerge in area level data, why spatial structure matters, and how tools such as Moran’s I and LISA help diagnose spatial dependence. These diagnostics are an essential first step, but they also raise an important question.</p>
 <p>What should we do next when spatial autocorrelation is present?</p>
 <p>This page introduces regression as a next step in ecological analysis. Its purpose is not to teach software implementation, but to help you understand how regression models can be adapted to spatial data, and how analysts decide which type of spatial model is appropriate.</p>
+</section>
 <section id="from-diagnostics-to-modelling" class="level2">
 <h2 class="anchored" data-anchor-id="from-diagnostics-to-modelling">From diagnostics to modelling</h2>
 <p>Earlier in the module, you learned that spatial autocorrelation violates key assumptions of standard regression models. In particular, when neighbouring areas tend to have similar values, the assumption that observations are independent no longer holds. As discussed in the section on spatial autocorrelation, this can lead to misleading statistical inference, such as inflated or deflated test statistics.</p>
@@ -289,7 +290,6 @@ y_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \dots + b_{ni} x_{ni} + e_i
 <p>Further resources and practical tutorials on implementing spatial regression models in specific software environments will be available on our website soon.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

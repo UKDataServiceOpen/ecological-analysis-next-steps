@@ -1,4 +1,4 @@
-# Regression – Ecological analysis
+## Introduction
 
 In the previous sections of this module, you explored how spatial patterns emerge in area level data, why spatial structure matters, and how tools such as Moran’s I and LISA help diagnose spatial dependence. These diagnostics are an essential first step, but they also raise an important question.
 
