@@ -51,7 +51,7 @@ This reflects spatial heterogeneity, a concept introduced earlier in the module.
 
 In practice, analysts may choose to allow the intercept to vary across space or explore models that explicitly account for spatial structure rather than assuming uniform effects.
 
-## Diagnosing spatial autocorrelation in regression residuals
+### Diagnosing spatial autocorrelation in regression residuals
 
 Even after including all relevant and available explanatory variables, spatial autocorrelation may still be present in the residuals. As discussed earlier, this can occur for several reasons:
 
@@ -93,7 +93,7 @@ This interpretation connects directly back to the diagnostic logic introduced ea
 
 ## Choosing an appropriate model
 
-## Choosing between spatial lag and spatial error models
+### Choosing between spatial lag and spatial error models
 
 Deciding whether to use a spatial lag or spatial error model is not purely mechanical. It should be guided by theory, context, and diagnostics.
 
@@ -117,7 +117,7 @@ $$
 
 If neither test is significant, a standard regression model may be appropriate.
 
-## A practical decision rule
+### A practical decision rule
 
 When diagnostic tests are used, a common decision process is as follows.
 

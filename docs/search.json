@@ -24,17 +24,7 @@
     "href": "index.html#when-space-matters-in-regression",
     "title": "Ecological analysis – Regression",
     "section": "When space matters in regression",
-    "text": "When space matters in regression\n\nAllowing relationships to vary across space\nOne reason standard regression may perform poorly with spatial data is that relationships can differ from place to place. The effect of an explanatory variable may not be constant across all areas.\nConceptually, this can be expressed by allowing regression coefficients to vary by spatial unit:\n\\[\ny_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \\dots + b_{ni} x_{ni} + e_i\n\\]\nThis reflects spatial heterogeneity, a concept introduced earlier in the module. For example, the relationship between health outcomes and access to services may differ between urban and rural areas, or between regions with different socioeconomic contexts.\nIn practice, analysts may choose to allow the intercept to vary across space or explore models that explicitly account for spatial structure rather than assuming uniform effects.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "index.html#diagnosing-spatial-autocorrelation-in-regression-residuals",
-    "href": "index.html#diagnosing-spatial-autocorrelation-in-regression-residuals",
-    "title": "Ecological analysis – Regression",
-    "section": "Diagnosing spatial autocorrelation in regression residuals",
-    "text": "Diagnosing spatial autocorrelation in regression residuals\nEven after including all relevant and available explanatory variables, spatial autocorrelation may still be present in the residuals. As discussed earlier, this can occur for several reasons:\n\nspatially correlated variables have been omitted from the model\nmeasurement errors are spatially clustered\nspatial interactions have not been explicitly modelled\n\nA significant Moran’s I on the residuals indicates that the regression model has not fully accounted for spatial dependence. At this point, spatial regression models provide a way forward.",
+    "text": "When space matters in regression\n\nAllowing relationships to vary across space\nOne reason standard regression may perform poorly with spatial data is that relationships can differ from place to place. The effect of an explanatory variable may not be constant across all areas.\nConceptually, this can be expressed by allowing regression coefficients to vary by spatial unit:\n\\[\ny_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \\dots + b_{ni} x_{ni} + e_i\n\\]\nThis reflects spatial heterogeneity, a concept introduced earlier in the module. For example, the relationship between health outcomes and access to services may differ between urban and rural areas, or between regions with different socioeconomic contexts.\nIn practice, analysts may choose to allow the intercept to vary across space or explore models that explicitly account for spatial structure rather than assuming uniform effects.\n\n\nDiagnosing spatial autocorrelation in regression residuals\nEven after including all relevant and available explanatory variables, spatial autocorrelation may still be present in the residuals. As discussed earlier, this can occur for several reasons:\n\nspatially correlated variables have been omitted from the model\nmeasurement errors are spatially clustered\nspatial interactions have not been explicitly modelled\n\nA significant Moran’s I on the residuals indicates that the regression model has not fully accounted for spatial dependence. At this point, spatial regression models provide a way forward.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -54,27 +44,7 @@
     "href": "index.html#choosing-an-appropriate-model",
     "title": "Ecological analysis – Regression",
     "section": "Choosing an appropriate model",
-    "text": "Choosing an appropriate model",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "index.html#choosing-between-spatial-lag-and-spatial-error-models",
-    "href": "index.html#choosing-between-spatial-lag-and-spatial-error-models",
-    "title": "Ecological analysis – Regression",
-    "section": "Choosing between spatial lag and spatial error models",
-    "text": "Choosing between spatial lag and spatial error models\nDeciding whether to use a spatial lag or spatial error model is not purely mechanical. It should be guided by theory, context, and diagnostics.\nTwo complementary approaches are commonly used.\n\nTheoretical and exploratory considerations\nBefore relying on formal tests, analysts should consider whether it is plausible that outcomes directly influence neighbouring outcomes, or whether spatial dependence is more likely driven by unobserved contextual factors.\nExploratory tools such as Moran’s I and LISA maps, introduced earlier in the module, provide valuable insight into the nature of spatial clustering.\n\n\nDiagnostic tests\nFormal diagnostic tests help support model choice. These include the Lagrange Multiplier test for spatial lag and the Lagrange Multiplier test for spatial error.\nThe null hypothesis for both tests is that there is no spatial autocorrelation:\n\\[\n\\rho = 0 \\quad \\text{and} \\quad \\lambda = 0\n\\]\nIf neither test is significant, a standard regression model may be appropriate.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "index.html#a-practical-decision-rule",
-    "href": "index.html#a-practical-decision-rule",
-    "title": "Ecological analysis – Regression",
-    "section": "A practical decision rule",
-    "text": "A practical decision rule\nWhen diagnostic tests are used, a common decision process is as follows.\nStep 1:\n\nLagrange Multiplier Lag significant implies a spatial lag model\nLagrange Multiplier Error significant implies a spatial error model\n\nIf both tests are significant:\n\nRobust Lagrange Multiplier Lag significant implies a spatial lag model\nRobust Lagrange Multiplier Error significant implies a spatial error model\n\nThe robust tests help disentangle situations where both forms of spatial dependence appear to be present.\nIt is important to remember that these tests are decision aids rather than definitive answers. Model choice should always be interpreted in light of substantive knowledge and the spatial context of the data.",
+    "text": "Choosing an appropriate model\n\nChoosing between spatial lag and spatial error models\nDeciding whether to use a spatial lag or spatial error model is not purely mechanical. It should be guided by theory, context, and diagnostics.\nTwo complementary approaches are commonly used.\n\n\nTheoretical and exploratory considerations\nBefore relying on formal tests, analysts should consider whether it is plausible that outcomes directly influence neighbouring outcomes, or whether spatial dependence is more likely driven by unobserved contextual factors.\nExploratory tools such as Moran’s I and LISA maps, introduced earlier in the module, provide valuable insight into the nature of spatial clustering.\n\n\nDiagnostic tests\nFormal diagnostic tests help support model choice. These include the Lagrange Multiplier test for spatial lag and the Lagrange Multiplier test for spatial error.\nThe null hypothesis for both tests is that there is no spatial autocorrelation:\n\\[\n\\rho = 0 \\quad \\text{and} \\quad \\lambda = 0\n\\]\nIf neither test is significant, a standard regression model may be appropriate.\n\n\nA practical decision rule\nWhen diagnostic tests are used, a common decision process is as follows.\nStep 1:\n\nLagrange Multiplier Lag significant implies a spatial lag model\nLagrange Multiplier Error significant implies a spatial error model\n\nIf both tests are significant:\n\nRobust Lagrange Multiplier Lag significant implies a spatial lag model\nRobust Lagrange Multiplier Error significant implies a spatial error model\n\nThe robust tests help disentangle situations where both forms of spatial dependence appear to be present.\nIt is important to remember that these tests are decision aids rather than definitive answers. Model choice should always be interpreted in light of substantive knowledge and the spatial context of the data.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]

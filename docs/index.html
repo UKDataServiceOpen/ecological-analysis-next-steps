@@ -156,11 +156,8 @@ window.Quarto = {
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#why-regression-is-the-next-step" id="toc-why-regression-is-the-next-step" class="nav-link" data-scroll-target="#why-regression-is-the-next-step">Why regression is the next step</a></li>
   <li><a href="#when-space-matters-in-regression" id="toc-when-space-matters-in-regression" class="nav-link" data-scroll-target="#when-space-matters-in-regression">When space matters in regression</a></li>
-  <li><a href="#diagnosing-spatial-autocorrelation-in-regression-residuals" id="toc-diagnosing-spatial-autocorrelation-in-regression-residuals" class="nav-link" data-scroll-target="#diagnosing-spatial-autocorrelation-in-regression-residuals">Diagnosing spatial autocorrelation in regression residuals</a></li>
   <li><a href="#modelling-spatial-dependence" id="toc-modelling-spatial-dependence" class="nav-link" data-scroll-target="#modelling-spatial-dependence">Modelling spatial dependence</a></li>
   <li><a href="#choosing-an-appropriate-model" id="toc-choosing-an-appropriate-model" class="nav-link" data-scroll-target="#choosing-an-appropriate-model">Choosing an appropriate model</a></li>
-  <li><a href="#choosing-between-spatial-lag-and-spatial-error-models" id="toc-choosing-between-spatial-lag-and-spatial-error-models" class="nav-link" data-scroll-target="#choosing-between-spatial-lag-and-spatial-error-models">Choosing between spatial lag and spatial error models</a></li>
-  <li><a href="#a-practical-decision-rule" id="toc-a-practical-decision-rule" class="nav-link" data-scroll-target="#a-practical-decision-rule">A practical decision rule</a></li>
   <li><a href="#looking-ahead" id="toc-looking-ahead" class="nav-link" data-scroll-target="#looking-ahead">Looking ahead</a></li>
   </ul>
 </nav>
@@ -245,9 +242,8 @@ y_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \dots + b_{ni} x_{ni} + e_i
 <p>This reflects spatial heterogeneity, a concept introduced earlier in the module. For example, the relationship between health outcomes and access to services may differ between urban and rural areas, or between regions with different socioeconomic contexts.</p>
 <p>In practice, analysts may choose to allow the intercept to vary across space or explore models that explicitly account for spatial structure rather than assuming uniform effects.</p>
 </section>
-</section>
-<section id="diagnosing-spatial-autocorrelation-in-regression-residuals" class="level2">
-<h2 class="anchored" data-anchor-id="diagnosing-spatial-autocorrelation-in-regression-residuals">Diagnosing spatial autocorrelation in regression residuals</h2>
+<section id="diagnosing-spatial-autocorrelation-in-regression-residuals" class="level3">
+<h3 class="anchored" data-anchor-id="diagnosing-spatial-autocorrelation-in-regression-residuals">Diagnosing spatial autocorrelation in regression residuals</h3>
 <p>Even after including all relevant and available explanatory variables, spatial autocorrelation may still be present in the residuals. As discussed earlier, this can occur for several reasons:</p>
 <ul>
 <li>spatially correlated variables have been omitted from the model</li>
@@ -255,6 +251,7 @@ y_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \dots + b_{ni} x_{ni} + e_i
 <li>spatial interactions have not been explicitly modelled</li>
 </ul>
 <p>A significant Moran’s I on the residuals indicates that the regression model has not fully accounted for spatial dependence. At this point, spatial regression models provide a way forward.</p>
+</section>
 </section>
 <section id="modelling-spatial-dependence" class="level2">
 <h2 class="anchored" data-anchor-id="modelling-spatial-dependence">Modelling spatial dependence</h2>
@@ -284,11 +281,11 @@ y_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \dots + b_{ni} x_{ni} + e_i
 </section>
 <section id="choosing-an-appropriate-model" class="level2">
 <h2 class="anchored" data-anchor-id="choosing-an-appropriate-model">Choosing an appropriate model</h2>
-</section>
-<section id="choosing-between-spatial-lag-and-spatial-error-models" class="level2">
-<h2 class="anchored" data-anchor-id="choosing-between-spatial-lag-and-spatial-error-models">Choosing between spatial lag and spatial error models</h2>
+<section id="choosing-between-spatial-lag-and-spatial-error-models" class="level3">
+<h3 class="anchored" data-anchor-id="choosing-between-spatial-lag-and-spatial-error-models">Choosing between spatial lag and spatial error models</h3>
 <p>Deciding whether to use a spatial lag or spatial error model is not purely mechanical. It should be guided by theory, context, and diagnostics.</p>
 <p>Two complementary approaches are commonly used.</p>
+</section>
 <section id="theoretical-and-exploratory-considerations" class="level3">
 <h3 class="anchored" data-anchor-id="theoretical-and-exploratory-considerations">Theoretical and exploratory considerations</h3>
 <p>Before relying on formal tests, analysts should consider whether it is plausible that outcomes directly influence neighbouring outcomes, or whether spatial dependence is more likely driven by unobserved contextual factors.</p>
@@ -303,9 +300,8 @@ y_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \dots + b_{ni} x_{ni} + e_i
 \]</span></p>
 <p>If neither test is significant, a standard regression model may be appropriate.</p>
 </section>
-</section>
-<section id="a-practical-decision-rule" class="level2">
-<h2 class="anchored" data-anchor-id="a-practical-decision-rule">A practical decision rule</h2>
+<section id="a-practical-decision-rule" class="level3">
+<h3 class="anchored" data-anchor-id="a-practical-decision-rule">A practical decision rule</h3>
 <p>When diagnostic tests are used, a common decision process is as follows.</p>
 <p>Step 1:</p>
 <ul>
@@ -319,6 +315,7 @@ y_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \dots + b_{ni} x_{ni} + e_i
 </ul>
 <p>The robust tests help disentangle situations where both forms of spatial dependence appear to be present.</p>
 <p>It is important to remember that these tests are decision aids rather than definitive answers. Model choice should always be interpreted in light of substantive knowledge and the spatial context of the data.</p>
+</section>
 </section>
 <section id="looking-ahead" class="level2">
 <h2 class="anchored" data-anchor-id="looking-ahead">Looking ahead</h2>
