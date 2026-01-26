@@ -6,7 +6,7 @@
     "section": "",
     "text": "Introduction\nIn the previous sections of this module, you explored how spatial patterns emerge in area level data, why spatial structure matters, and how tools such as Moran’s I and LISA help diagnose spatial dependence. These diagnostics are an essential first step, but they also raise an important question.\nWhat should we do next when spatial autocorrelation is present?\nThis page introduces regression as a next step in ecological analysis. Its purpose is not to teach software implementation, but to help you understand how regression models can be adapted to spatial data, and how analysts decide which type of spatial model is appropriate.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Ecological analysis - Regression</span>"
     ]
   },
   {
@@ -16,7 +16,7 @@
     "section": "Why regression is the next step",
     "text": "Why regression is the next step\n\nFrom diagnostics to modelling\nEarlier in the module, you learned that spatial autocorrelation violates key assumptions of standard regression models. In particular, when neighbouring areas tend to have similar values, the assumption that observations are independent no longer holds. As discussed in the section on spatial autocorrelation, this can lead to misleading statistical inference, such as inflated or deflated test statistics.\nRegression modelling therefore comes after spatial diagnostics.\nA typical analytical workflow is:\n\nA standard regression model is estimated.\nThe residuals are examined for spatial autocorrelation, for example using Moran’s I.\nIf spatial autocorrelation remains, a spatial regression model is considered.\n\nThe models introduced below are designed to respond directly to the issues identified at the final step.\n\n\nLinear regression as a starting point\nA conventional linear regression model relates an outcome variable to one or more explanatory variables:\n\\[\ny = b_0 + b_1 x_1 + b_2 x_2 + \\dots + b_n x_n + e\n\\]\nwhere the error term captures unexplained variation.\nIn ecological analysis, this model is often used as a baseline. It provides an initial description of relationships between area level characteristics such as employment rates, housing conditions, or health outcomes. However, as shown earlier in the module, this model assumes that observations are independent across space, an assumption that is rarely satisfied with geographical data.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Ecological analysis - Regression</span>"
     ]
   },
   {
@@ -26,7 +26,7 @@
     "section": "When space matters in regression",
     "text": "When space matters in regression\n\nAllowing relationships to vary across space\nOne reason standard regression may perform poorly with spatial data is that relationships can differ from place to place. The effect of an explanatory variable may not be constant across all areas.\nConceptually, this can be expressed by allowing regression coefficients to vary by spatial unit:\n\\[\ny_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \\dots + b_{ni} x_{ni} + e_i\n\\]\nThis reflects spatial heterogeneity, a concept introduced earlier in the module. For example, the relationship between health outcomes and access to services may differ between urban and rural areas, or between regions with different socioeconomic contexts.\nIn practice, analysts may choose to allow the intercept to vary across space or explore models that explicitly account for spatial structure rather than assuming uniform effects.\n\n\nDiagnosing spatial autocorrelation in regression residuals\nEven after including all relevant and available explanatory variables, spatial autocorrelation may still be present in the residuals. As discussed earlier, this can occur for several reasons:\n\nspatially correlated variables have been omitted from the model\nmeasurement errors are spatially clustered\nspatial interactions have not been explicitly modelled\n\nA significant Moran’s I on the residuals indicates that the regression model has not fully accounted for spatial dependence. At this point, spatial regression models provide a way forward.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Ecological analysis - Regression</span>"
     ]
   },
   {
@@ -36,7 +36,7 @@
     "section": "Modelling spatial dependence",
     "text": "Modelling spatial dependence\n\nSpatial lag model\nA spatial lag model addresses spatial dependence by recognising that outcomes in one area may be directly influenced by outcomes in neighbouring areas.\nIn this model, a spatially lagged version of the dependent variable is included as a predictor. The strength of this spatial dependence is captured by a parameter commonly referred to as rho (ρ).\nIntuitively, a spatial lag model reflects situations where what happens in one place influences what happens nearby. Examples might include housing markets, diffusion of innovation, or contagious social or health processes.\n\n\nSpatial error model\nA spatial error model takes a different approach. Rather than modelling direct influence between neighbouring outcomes, it assumes that unobserved spatial processes affect multiple areas simultaneously.\nThis model separates the error term into a spatially correlated component and a spatially uncorrelated component. The strength of the spatially correlated error is captured by lambda (λ).\nConceptually, a spatial error model is appropriate when important explanatory factors are missing from the model and these omitted factors are spatially clustered. In this case, spatial dependence appears in the residuals rather than in the outcome itself.\n\n\nInterpreting rho and lambda\nBoth rho (ρ) and lambda (λ) are typically estimated using maximum likelihood methods.\nFrom an interpretative perspective:\n\nvalues close to zero suggest little or no spatial dependence\nlarger absolute values indicate stronger spatial structure\nwhen both parameters are effectively zero, a standard regression model may be sufficient\n\nThis interpretation connects directly back to the diagnostic logic introduced earlier in the module.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Ecological analysis - Regression</span>"
     ]
   },
   {
@@ -46,7 +46,7 @@
     "section": "Choosing an appropriate model",
     "text": "Choosing an appropriate model\n\nChoosing between spatial lag and spatial error models\nDeciding whether to use a spatial lag or spatial error model is not purely mechanical. It should be guided by theory, context, and diagnostics.\nTwo complementary approaches are commonly used.\n\n\nTheoretical and exploratory considerations\nBefore relying on formal tests, analysts should consider whether it is plausible that outcomes directly influence neighbouring outcomes, or whether spatial dependence is more likely driven by unobserved contextual factors.\nExploratory tools such as Moran’s I and LISA maps, introduced earlier in the module, provide valuable insight into the nature of spatial clustering.\n\n\nDiagnostic tests\nFormal diagnostic tests help support model choice. These include the Lagrange Multiplier test for spatial lag and the Lagrange Multiplier test for spatial error.\nThe null hypothesis for both tests is that there is no spatial autocorrelation:\n\\[\n\\rho = 0 \\quad \\text{and} \\quad \\lambda = 0\n\\]\nIf neither test is significant, a standard regression model may be appropriate.\n\n\nA practical decision rule\nWhen diagnostic tests are used, a common decision process is as follows.\nStep 1:\n\nLagrange Multiplier Lag significant implies a spatial lag model\nLagrange Multiplier Error significant implies a spatial error model\n\nIf both tests are significant:\n\nRobust Lagrange Multiplier Lag significant implies a spatial lag model\nRobust Lagrange Multiplier Error significant implies a spatial error model\n\nThe robust tests help disentangle situations where both forms of spatial dependence appear to be present.\nIt is important to remember that these tests are decision aids rather than definitive answers. Model choice should always be interpreted in light of substantive knowledge and the spatial context of the data.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Ecological analysis - Regression</span>"
     ]
   },
   {
@@ -56,7 +56,7 @@
     "section": "Looking ahead",
     "text": "Looking ahead\nThis page has introduced the conceptual logic behind spatial regression as a next step in ecological analysis. You are not expected to implement these models at this stage. Instead, the goal is to understand why standard regression may be insufficient for spatial data, how spatial lag and spatial error models address different problems, and how diagnostics guide analytical decisions.\nFurther resources and practical tutorials on implementing spatial regression models in specific software environments will be available on our website soon.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Ecological analysis - Regression</span>"
     ]
   }
 ]
