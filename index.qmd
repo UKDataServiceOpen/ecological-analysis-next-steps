@@ -1,0 +1,133 @@
+# Regression – Ecological analysis
+
+In the previous sections of this module, you explored how spatial patterns emerge in area level data, why spatial structure matters, and how tools such as Moran’s I and LISA help diagnose spatial dependence. These diagnostics are an essential first step, but they also raise an important question.
+
+What should we do next when spatial autocorrelation is present?
+
+This page introduces regression as a next step in ecological analysis. Its purpose is not to teach software implementation, but to help you understand how regression models can be adapted to spatial data, and how analysts decide which type of spatial model is appropriate.
+
+## From diagnostics to modelling
+
+Earlier in the module, you learned that spatial autocorrelation violates key assumptions of standard regression models. In particular, when neighbouring areas tend to have similar values, the assumption that observations are independent no longer holds. As discussed in the section on spatial autocorrelation, this can lead to misleading statistical inference, such as inflated or deflated test statistics.
+
+Regression modelling therefore comes after spatial diagnostics.
+
+A typical analytical workflow is:
+
+1. A standard regression model is estimated.
+2. The residuals are examined for spatial autocorrelation, for example using Moran’s I.
+3. If spatial autocorrelation remains, a spatial regression model is considered.
+
+The models introduced below are designed to respond directly to the issues identified at the final step.
+
+## Linear regression as a starting point
+
+A conventional linear regression model relates an outcome variable to one or more explanatory variables:
+
+$$
+y = b_0 + b_1 x_1 + b_2 x_2 + \dots + b_n x_n + e
+$$
+
+where the error term captures unexplained variation.
+
+In ecological analysis, this model is often used as a baseline. It provides an initial description of relationships between area level characteristics such as employment rates, housing conditions, or health outcomes. However, as shown earlier in the module, this model assumes that observations are independent across space, an assumption that is rarely satisfied with geographical data.
+
+## Allowing relationships to vary across space
+
+One reason standard regression may perform poorly with spatial data is that relationships can differ from place to place. The effect of an explanatory variable may not be constant across all areas.
+
+Conceptually, this can be expressed by allowing regression coefficients to vary by spatial unit:
+
+$$
+y_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \dots + b_{ni} x_{ni} + e_i
+$$
+
+This reflects spatial heterogeneity, a concept introduced earlier in the module. For example, the relationship between health outcomes and access to services may differ between urban and rural areas, or between regions with different socioeconomic contexts.
+
+In practice, analysts may choose to allow the intercept to vary across space or explore models that explicitly account for spatial structure rather than assuming uniform effects.
+
+## Diagnosing spatial autocorrelation in regression residuals
+
+Even after including all relevant and available explanatory variables, spatial autocorrelation may still be present in the residuals. As discussed earlier, this can occur for several reasons:
+
+- spatially correlated variables have been omitted from the model
+- measurement errors are spatially clustered
+- spatial interactions have not been explicitly modelled
+
+A significant Moran’s I on the residuals indicates that the regression model has not fully accounted for spatial dependence. At this point, spatial regression models provide a way forward.
+
+## Spatial lag model
+
+A spatial lag model addresses spatial dependence by recognising that outcomes in one area may be directly influenced by outcomes in neighbouring areas.
+
+In this model, a spatially lagged version of the dependent variable is included as a predictor. The strength of this spatial dependence is captured by a parameter commonly referred to as rho (ρ).
+
+Intuitively, a spatial lag model reflects situations where what happens in one place influences what happens nearby. Examples might include housing markets, diffusion of innovation, or contagious social or health processes.
+
+## Spatial error model
+
+A spatial error model takes a different approach. Rather than modelling direct influence between neighbouring outcomes, it assumes that unobserved spatial processes affect multiple areas simultaneously.
+
+This model separates the error term into a spatially correlated component and a spatially uncorrelated component. The strength of the spatially correlated error is captured by lambda (λ).
+
+Conceptually, a spatial error model is appropriate when important explanatory factors are missing from the model and these omitted factors are spatially clustered. In this case, spatial dependence appears in the residuals rather than in the outcome itself.
+
+## Interpreting rho and lambda
+
+Both rho (ρ) and lambda (λ) are typically estimated using maximum likelihood methods.
+
+From an interpretative perspective:
+
+- values close to zero suggest little or no spatial dependence
+- larger absolute values indicate stronger spatial structure
+- when both parameters are effectively zero, a standard regression model may be sufficient
+
+This interpretation connects directly back to the diagnostic logic introduced earlier in the module.
+
+## Choosing between spatial lag and spatial error models
+
+Deciding whether to use a spatial lag or spatial error model is not purely mechanical. It should be guided by theory, context, and diagnostics.
+
+Two complementary approaches are commonly used.
+
+### Theoretical and exploratory considerations
+
+Before relying on formal tests, analysts should consider whether it is plausible that outcomes directly influence neighbouring outcomes, or whether spatial dependence is more likely driven by unobserved contextual factors.
+
+Exploratory tools such as Moran’s I and LISA maps, introduced earlier in the module, provide valuable insight into the nature of spatial clustering.
+
+### Diagnostic tests
+
+Formal diagnostic tests help support model choice. These include the Lagrange Multiplier test for spatial lag and the Lagrange Multiplier test for spatial error.
+
+The null hypothesis for both tests is that there is no spatial autocorrelation:
+
+$$
+\rho = 0 \quad \text{and} \quad \lambda = 0
+$$
+
+If neither test is significant, a standard regression model may be appropriate.
+
+## A practical decision rule
+
+When diagnostic tests are used, a common decision process is as follows.
+
+Step 1:
+
+- Lagrange Multiplier Lag significant implies a spatial lag model
+- Lagrange Multiplier Error significant implies a spatial error model
+
+If both tests are significant:
+
+- Robust Lagrange Multiplier Lag significant implies a spatial lag model
+- Robust Lagrange Multiplier Error significant implies a spatial error model
+
+The robust tests help disentangle situations where both forms of spatial dependence appear to be present.
+
+It is important to remember that these tests are decision aids rather than definitive answers. Model choice should always be interpreted in light of substantive knowledge and the spatial context of the data.
+
+## Looking ahead
+
+This page has introduced the conceptual logic behind spatial regression as a next step in ecological analysis. You are not expected to implement these models at this stage. Instead, the goal is to understand why standard regression may be insufficient for spatial data, how spatial lag and spatial error models address different problems, and how diagnostics guide analytical decisions.
+
+Further resources and practical tutorials on implementing spatial regression models in specific software environments will be available on our website soon.

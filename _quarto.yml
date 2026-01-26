@@ -1,0 +1,105 @@
+project:
+  type: book
+  output-dir: docs                          ### Where the rendered HTML will go
+
+### Code execution options
+execute:                       ### How R code is going to be interpreted
+  echo: true                   ### These can be changed for individual code blocks
+  warning: false
+  message: false
+
+jupyter: nbstata                ### How Stata code is going to be interpreted
+  
+book:                                       ### Book specific formating
+  title: "Concepts of ecological analysis - Next steps" ### Replace as necessary 
+  author: "UK Data Service"                  
+  date: "2026-01-23"                        ### Replace as necessary
+  date-format: "MMMM YYYY"              
+#  output-file: "single_output_file"         ### In case a single file output is required. Uncomment if necessary
+
+### Specifies the book content: ie what files will be rendered
+  chapters:
+    - index.qmd                             ### Example pages to render as part of the book (add/remove as required). ***index.qmd is mandatory***
+  
+
+
+### A more complex document structure:
+# chapters:
+#     - index.qmd
+#     - part: "**1. Temporary work**"
+#       chapters:
+#       - exercise_1.qmd
+#       - exercise_1_Stata.qmd
+#       - exercise_1_spss.qmd
+#     - part: "**2. Weekly earnings**"
+#       chapters:
+#       - exercise_2.qmd
+#       - exercise_2_Stata.qmd
+#       - exercise_2_spss.qmd
+#     - part: "**3. Labour Market Flows**"
+#       chapters:
+#       - exercise_3.qmd
+#       - exercise_3_Stata.qmd
+#       - exercise_3_spss.qmd
+#     - part: "**4. Estimates precision**"
+#       chapters:
+#       - exercise_4.qmd
+#       - exercise_4_Stata.qmd
+#       - exercise_4_spss.qmd
+
+
+### Below are option for a sidebar on the left hand side of the page 
+### They include an accessibility compliant UK Data Service logo
+  sidebar: 
+    style: "floating"
+    search: false
+    title: " "
+    logo: pics/UKDS_Logos_Col_Grey_300dpi.png
+    logo-href: https://ukdataservice.ac.uk/
+    logo-alt: "UK Data Service Logo and link to website"
+
+### Options required by each output format ie html, pedf, etc
+format:
+  html:
+    css: ukds_long.css                      ### custom stylesheet
+    toc: false                               ### include a table of content...
+    #toc-location: right                     ### ... on the right of the page
+    #toc-depth: 2                            ### Number of levels of TOC shown
+    number-sections: false                  ### No automatic numbering. Change as necessary
+    code-fold: false                        ### Whether syntax block is folded (hidden) by default
+    fig-cap-location: top                   ### Figure titles/captions at the top 
+    tbl-cap-location: top                   ### Table titles/captions at the top
+    smooth-scroll: true
+    code-overflow: scroll
+    page-layout: full
+    highlight-style: arrow-light
+    code-line-numbers: true
+    link-external-newwindow: true
+    citations-hover: true
+    footnotes-hover: true
+#   embed-resources: true                  ### Embed everything in the final html file - sometimes easier when sharing
+  
+
+
+######## Below are settings in case a pdf document is created. Uncomment if required
+# titlepage-pdf:
+#      titlepage: plain
+#      titlepage-geometry:
+#       - top=70mm
+#       - left=30mm
+#       - right=30mm
+#       - bottom=30mm
+#      titlepage-theme:
+#       logo-size: 3cm
+#       title-fontstyle: Huge
+#      titlepage-logo: "pics/UKDS_Logos_Col_Grey_300dpi.png"  
+#      documentclass: scrreport
+#      fig-width: 7
+#      papersize: A4
+#      include-in-header: preamble.tex
+#      geometry:
+#       - top=25mm
+#       - left=25mm
+#       - right=25mm
+#       - bottom=30mm
+# 

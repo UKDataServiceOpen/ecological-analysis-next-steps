@@ -1,0 +1,11 @@
+# Quarto / RStudio generated
+.quarto/
+.quarto-project/
+.Rproj.user/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+/.quarto/
+**/*.quarto_ipynb
