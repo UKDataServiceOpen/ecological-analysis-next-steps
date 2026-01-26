@@ -8,7 +8,7 @@
 
 <meta name="author" content="UK Data Service">
 
-<title>Concepts of ecological analysis - Next steps</title>
+<title>Ecological analysis – Regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,6 +116,9 @@ window.Quarto = {
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">Introduction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
     </div>
   </nav>
 </header>
@@ -129,9 +132,14 @@ window.Quarto = {
       <img src="./pics/UKDS_Logos_Col_Grey_300dpi.png" alt="UK Data Service Logo and link to website" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./"></a> 
+      <a href="./">Ecological analysis – Regression</a> 
     </div>
       </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -141,16 +149,34 @@ window.Quarto = {
 </li>
     </ul>
     </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#from-diagnostics-to-modelling" id="toc-from-diagnostics-to-modelling" class="nav-link" data-scroll-target="#from-diagnostics-to-modelling">From diagnostics to modelling</a></li>
+  <li><a href="#linear-regression-as-a-starting-point" id="toc-linear-regression-as-a-starting-point" class="nav-link" data-scroll-target="#linear-regression-as-a-starting-point">Linear regression as a starting point</a></li>
+  <li><a href="#allowing-relationships-to-vary-across-space" id="toc-allowing-relationships-to-vary-across-space" class="nav-link" data-scroll-target="#allowing-relationships-to-vary-across-space">Allowing relationships to vary across space</a></li>
+  <li><a href="#diagnosing-spatial-autocorrelation-in-regression-residuals" id="toc-diagnosing-spatial-autocorrelation-in-regression-residuals" class="nav-link" data-scroll-target="#diagnosing-spatial-autocorrelation-in-regression-residuals">Diagnosing spatial autocorrelation in regression residuals</a></li>
+  <li><a href="#spatial-lag-model" id="toc-spatial-lag-model" class="nav-link" data-scroll-target="#spatial-lag-model">Spatial lag model</a></li>
+  <li><a href="#spatial-error-model" id="toc-spatial-error-model" class="nav-link" data-scroll-target="#spatial-error-model">Spatial error model</a></li>
+  <li><a href="#interpreting-rho-and-lambda" id="toc-interpreting-rho-and-lambda" class="nav-link" data-scroll-target="#interpreting-rho-and-lambda">Interpreting rho and lambda</a></li>
+  <li><a href="#choosing-between-spatial-lag-and-spatial-error-models" id="toc-choosing-between-spatial-lag-and-spatial-error-models" class="nav-link" data-scroll-target="#choosing-between-spatial-lag-and-spatial-error-models">Choosing between spatial lag and spatial error models</a></li>
+  <li><a href="#a-practical-decision-rule" id="toc-a-practical-decision-rule" class="nav-link" data-scroll-target="#a-practical-decision-rule">A practical decision rule</a></li>
+  <li><a href="#looking-ahead" id="toc-looking-ahead" class="nav-link" data-scroll-target="#looking-ahead">Looking ahead</a></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
 <main class="content column-page-right" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Concepts of ecological analysis - Next steps</h1>
+<h1 class="title">Ecological analysis – Regression</h1>
 </div>
 
 

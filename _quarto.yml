@@ -11,7 +11,7 @@ execute:                       ### How R code is going to be interpreted
 jupyter: nbstata                ### How Stata code is going to be interpreted
   
 book:                                       ### Book specific formating
-  title: "Concepts of ecological analysis - Next steps" ### Replace as necessary 
+  title: "Ecological analysis – Regression" ### Replace as necessary 
   author: "UK Data Service"                  
   date: "2026-01-23"                        ### Replace as necessary
   date-format: "MMMM YYYY"              
@@ -52,8 +52,7 @@ book:                                       ### Book specific formating
 ### They include an accessibility compliant UK Data Service logo
   sidebar: 
     style: "floating"
-    search: false
-    title: " "
+    search: true
     logo: pics/UKDS_Logos_Col_Grey_300dpi.png
     logo-href: https://ukdataservice.ac.uk/
     logo-alt: "UK Data Service Logo and link to website"
@@ -62,9 +61,9 @@ book:                                       ### Book specific formating
 format:
   html:
     css: ukds_long.css                      ### custom stylesheet
-    toc: false                               ### include a table of content...
-    #toc-location: right                     ### ... on the right of the page
-    #toc-depth: 2                            ### Number of levels of TOC shown
+    toc: true                               ### include a table of content...
+    toc-location: left                     ### ... on the right of the page
+    toc-depth: 2                            ### Number of levels of TOC shown
     number-sections: false                  ### No automatic numbering. Change as necessary
     code-fold: false                        ### Whether syntax block is folded (hidden) by default
     fig-cap-location: top                   ### Figure titles/captions at the top 
