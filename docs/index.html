@@ -113,7 +113,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">Ecological analysis - Regression</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">.</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -144,7 +144,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Ecological analysis - Regression</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">.</span></a>
   </div>
 </li>
     </ul>
@@ -154,10 +154,10 @@ window.Quarto = {
    
   <ul class="collapse">
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#why-regression-is-the-next-step" id="toc-why-regression-is-the-next-step" class="nav-link" data-scroll-target="#why-regression-is-the-next-step">Why regression is the next step</a></li>
-  <li><a href="#when-space-matters-in-regression" id="toc-when-space-matters-in-regression" class="nav-link" data-scroll-target="#when-space-matters-in-regression">When space matters in regression</a></li>
-  <li><a href="#modelling-spatial-dependence" id="toc-modelling-spatial-dependence" class="nav-link" data-scroll-target="#modelling-spatial-dependence">Modelling spatial dependence</a></li>
-  <li><a href="#choosing-an-appropriate-model" id="toc-choosing-an-appropriate-model" class="nav-link" data-scroll-target="#choosing-an-appropriate-model">Choosing an appropriate model</a></li>
+  <li><a href="#next-step-regression" id="toc-next-step-regression" class="nav-link" data-scroll-target="#next-step-regression">Next step: regression</a></li>
+  <li><a href="#when-space-matters" id="toc-when-space-matters" class="nav-link" data-scroll-target="#when-space-matters">When space matters</a></li>
+  <li><a href="#lag-and-error-models" id="toc-lag-and-error-models" class="nav-link" data-scroll-target="#lag-and-error-models">Lag and error models</a></li>
+  <li><a href="#choose-the-best-model" id="toc-choose-the-best-model" class="nav-link" data-scroll-target="#choose-the-best-model">Choose the best model</a></li>
   <li><a href="#looking-ahead" id="toc-looking-ahead" class="nav-link" data-scroll-target="#looking-ahead">Looking ahead</a></li>
   </ul>
 </nav>
@@ -206,10 +206,10 @@ window.Quarto = {
 <p>What should we do next when spatial autocorrelation is present?</p>
 <p>This page introduces regression as a next step in ecological analysis. Its purpose is not to teach software implementation, but to help you understand how regression models can be adapted to spatial data, and how analysts decide which type of spatial model is appropriate.</p>
 </section>
-<section id="why-regression-is-the-next-step" class="level2">
-<h2 class="anchored" data-anchor-id="why-regression-is-the-next-step">Why regression is the next step</h2>
-<section id="from-diagnostics-to-modelling" class="level3">
-<h3 class="anchored" data-anchor-id="from-diagnostics-to-modelling">From diagnostics to modelling</h3>
+<section id="next-step-regression" class="level2">
+<h2 class="anchored" data-anchor-id="next-step-regression">Next step: regression</h2>
+<section id="from-diagnostics-to-modelling" class="level4">
+<h4 class="anchored" data-anchor-id="from-diagnostics-to-modelling">From diagnostics to modelling</h4>
 <p>Earlier in the module, you learned that spatial autocorrelation violates key assumptions of standard regression models. In particular, when neighbouring areas tend to have similar values, the assumption that observations are independent no longer holds. As discussed in the section on spatial autocorrelation, this can lead to misleading statistical inference, such as inflated or deflated test statistics.</p>
 <p>Regression modelling therefore comes after spatial diagnostics.</p>
 <p>A typical analytical workflow is:</p>
@@ -220,8 +220,8 @@ window.Quarto = {
 </ol>
 <p>The models introduced below are designed to respond directly to the issues identified at the final step.</p>
 </section>
-<section id="linear-regression-as-a-starting-point" class="level3">
-<h3 class="anchored" data-anchor-id="linear-regression-as-a-starting-point">Linear regression as a starting point</h3>
+<section id="linear-regression-as-a-starting-point" class="level4">
+<h4 class="anchored" data-anchor-id="linear-regression-as-a-starting-point">Linear regression as a starting point</h4>
 <p>A conventional linear regression model relates an outcome variable to one or more explanatory variables:</p>
 <p><span class="math display">\[
 y = b_0 + b_1 x_1 + b_2 x_2 + \dots + b_n x_n + e
@@ -230,10 +230,10 @@ y = b_0 + b_1 x_1 + b_2 x_2 + \dots + b_n x_n + e
 <p>In ecological analysis, this model is often used as a baseline. It provides an initial description of relationships between area level characteristics such as employment rates, housing conditions, or health outcomes. However, as shown earlier in the module, this model assumes that observations are independent across space, an assumption that is rarely satisfied with geographical data.</p>
 </section>
 </section>
-<section id="when-space-matters-in-regression" class="level2">
-<h2 class="anchored" data-anchor-id="when-space-matters-in-regression">When space matters in regression</h2>
-<section id="allowing-relationships-to-vary-across-space" class="level3">
-<h3 class="anchored" data-anchor-id="allowing-relationships-to-vary-across-space">Allowing relationships to vary across space</h3>
+<section id="when-space-matters" class="level2">
+<h2 class="anchored" data-anchor-id="when-space-matters">When space matters</h2>
+<section id="allowing-relationships-to-vary-across-space" class="level4">
+<h4 class="anchored" data-anchor-id="allowing-relationships-to-vary-across-space">Allowing relationships to vary across space</h4>
 <p>One reason standard regression may perform poorly with spatial data is that relationships can differ from place to place. The effect of an explanatory variable may not be constant across all areas.</p>
 <p>Conceptually, this can be expressed by allowing regression coefficients to vary by spatial unit:</p>
 <p><span class="math display">\[
@@ -242,8 +242,8 @@ y_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \dots + b_{ni} x_{ni} + e_i
 <p>This reflects spatial heterogeneity, a concept introduced earlier in the module. For example, the relationship between health outcomes and access to services may differ between urban and rural areas, or between regions with different socioeconomic contexts.</p>
 <p>In practice, analysts may choose to allow the intercept to vary across space or explore models that explicitly account for spatial structure rather than assuming uniform effects.</p>
 </section>
-<section id="diagnosing-spatial-autocorrelation-in-regression-residuals" class="level3">
-<h3 class="anchored" data-anchor-id="diagnosing-spatial-autocorrelation-in-regression-residuals">Diagnosing spatial autocorrelation in regression residuals</h3>
+<section id="diagnosing-spatial-autocorrelation-in-regression-residuals" class="level4">
+<h4 class="anchored" data-anchor-id="diagnosing-spatial-autocorrelation-in-regression-residuals">Diagnosing spatial autocorrelation in regression residuals</h4>
 <p>Even after including all relevant and available explanatory variables, spatial autocorrelation may still be present in the residuals. As discussed earlier, this can occur for several reasons:</p>
 <ul>
 <li>spatially correlated variables have been omitted from the model</li>
@@ -253,22 +253,22 @@ y_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \dots + b_{ni} x_{ni} + e_i
 <p>A significant Moran’s I on the residuals indicates that the regression model has not fully accounted for spatial dependence. At this point, spatial regression models provide a way forward.</p>
 </section>
 </section>
-<section id="modelling-spatial-dependence" class="level2">
-<h2 class="anchored" data-anchor-id="modelling-spatial-dependence">Modelling spatial dependence</h2>
-<section id="spatial-lag-model" class="level3">
-<h3 class="anchored" data-anchor-id="spatial-lag-model">Spatial lag model</h3>
+<section id="lag-and-error-models" class="level2">
+<h2 class="anchored" data-anchor-id="lag-and-error-models">Lag and error models</h2>
+<section id="spatial-lag-model" class="level4">
+<h4 class="anchored" data-anchor-id="spatial-lag-model">Spatial lag model</h4>
 <p>A spatial lag model addresses spatial dependence by recognising that outcomes in one area may be directly influenced by outcomes in neighbouring areas.</p>
 <p>In this model, a spatially lagged version of the dependent variable is included as a predictor. The strength of this spatial dependence is captured by a parameter commonly referred to as rho (ρ).</p>
 <p>Intuitively, a spatial lag model reflects situations where what happens in one place influences what happens nearby. Examples might include housing markets, diffusion of innovation, or contagious social or health processes.</p>
 </section>
-<section id="spatial-error-model" class="level3">
-<h3 class="anchored" data-anchor-id="spatial-error-model">Spatial error model</h3>
+<section id="spatial-error-model" class="level4">
+<h4 class="anchored" data-anchor-id="spatial-error-model">Spatial error model</h4>
 <p>A spatial error model takes a different approach. Rather than modelling direct influence between neighbouring outcomes, it assumes that unobserved spatial processes affect multiple areas simultaneously.</p>
 <p>This model separates the error term into a spatially correlated component and a spatially uncorrelated component. The strength of the spatially correlated error is captured by lambda (λ).</p>
 <p>Conceptually, a spatial error model is appropriate when important explanatory factors are missing from the model and these omitted factors are spatially clustered. In this case, spatial dependence appears in the residuals rather than in the outcome itself.</p>
 </section>
-<section id="interpreting-rho-and-lambda" class="level3">
-<h3 class="anchored" data-anchor-id="interpreting-rho-and-lambda">Interpreting rho and lambda</h3>
+<section id="interpreting-rho-and-lambda" class="level4">
+<h4 class="anchored" data-anchor-id="interpreting-rho-and-lambda">Interpreting rho and lambda</h4>
 <p>Both rho (ρ) and lambda (λ) are typically estimated using maximum likelihood methods.</p>
 <p>From an interpretative perspective:</p>
 <ul>
@@ -279,20 +279,17 @@ y_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \dots + b_{ni} x_{ni} + e_i
 <p>This interpretation connects directly back to the diagnostic logic introduced earlier in the module.</p>
 </section>
 </section>
-<section id="choosing-an-appropriate-model" class="level2">
-<h2 class="anchored" data-anchor-id="choosing-an-appropriate-model">Choosing an appropriate model</h2>
-<section id="choosing-between-spatial-lag-and-spatial-error-models" class="level3">
-<h3 class="anchored" data-anchor-id="choosing-between-spatial-lag-and-spatial-error-models">Choosing between spatial lag and spatial error models</h3>
+<section id="choose-the-best-model" class="level2">
+<h2 class="anchored" data-anchor-id="choose-the-best-model">Choose the best model</h2>
+<section id="theoretical-and-exploratory-considerations" class="level4">
+<h4 class="anchored" data-anchor-id="theoretical-and-exploratory-considerations">Theoretical and exploratory considerations</h4>
 <p>Deciding whether to use a spatial lag or spatial error model is not purely mechanical. It should be guided by theory, context, and diagnostics.</p>
 <p>Two complementary approaches are commonly used.</p>
-</section>
-<section id="theoretical-and-exploratory-considerations" class="level3">
-<h3 class="anchored" data-anchor-id="theoretical-and-exploratory-considerations">Theoretical and exploratory considerations</h3>
 <p>Before relying on formal tests, analysts should consider whether it is plausible that outcomes directly influence neighbouring outcomes, or whether spatial dependence is more likely driven by unobserved contextual factors.</p>
 <p>Exploratory tools such as Moran’s I and LISA maps, introduced earlier in the module, provide valuable insight into the nature of spatial clustering.</p>
 </section>
-<section id="diagnostic-tests" class="level3">
-<h3 class="anchored" data-anchor-id="diagnostic-tests">Diagnostic tests</h3>
+<section id="diagnostic-tests" class="level4">
+<h4 class="anchored" data-anchor-id="diagnostic-tests">Diagnostic tests</h4>
 <p>Formal diagnostic tests help support model choice. These include the Lagrange Multiplier test for spatial lag and the Lagrange Multiplier test for spatial error.</p>
 <p>The null hypothesis for both tests is that there is no spatial autocorrelation:</p>
 <p><span class="math display">\[
@@ -300,8 +297,8 @@ y_i = b_{0i} + b_{1i} x_{1i} + b_{2i} x_{2i} + \dots + b_{ni} x_{ni} + e_i
 \]</span></p>
 <p>If neither test is significant, a standard regression model may be appropriate.</p>
 </section>
-<section id="a-practical-decision-rule" class="level3">
-<h3 class="anchored" data-anchor-id="a-practical-decision-rule">A practical decision rule</h3>
+<section id="a-practical-decision-rule" class="level4">
+<h4 class="anchored" data-anchor-id="a-practical-decision-rule">A practical decision rule</h4>
 <p>When diagnostic tests are used, a common decision process is as follows.</p>
 <p>Step 1:</p>
 <ul>
