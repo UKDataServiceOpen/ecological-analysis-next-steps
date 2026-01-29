@@ -3,6 +3,7 @@
  * Default font: Open Sans
  * Brand color: #742082
  * Logo with hyperlink in top left
+ * No display of first section
  * Current page in BOTH TOCs: #742082
  */
 
@@ -76,16 +77,17 @@ a:visited {
 /* Logo in top left corner - LARGER SIZE 
 .sidebar-header {
   position: relative;
-  padding: 1.5rem 1.5rem; /* Increased padding for larger logo */
+  padding: 1.5rem 1.5rem; /* Increased padding for larger logo 
   border-bottom: 1px solid var(--border-light);
   background: white;
 }
 
-.sidebar-logo-img {
-  background: url('pics/UKDS_Logos_Col_Grey_300dpi.png') no-repeat; 
-  /* OR use <img> tag in your sidebar */
-}
+/* Hides the TOC Title */ 
+/*.sidebar h2 {
+  display: none !important;
+}*/
 
+*/
 /* Logo container with hyperlink */
 .sidebar-logo {
   display: block;
@@ -94,6 +96,7 @@ a:visited {
 
 /* Larger logo size */
 .sidebar-logo-img {
+  background: url('pics/UKDS_Logos_Col_Grey_300dpi.png') no-repeat; 
   height: 80px; /* Increased from 60px to 80px */
   width: auto;
   max-width: 280px; /* Increased from 200px to 280px */
@@ -117,11 +120,12 @@ a:visited {
 */
 
 /* Main content area adjustments */
-#quarto-document-container {
+.quarto-document-container {
   font-family: 'Open Sans', sans-serif;
 }
 
 /* LEFT SIDEBAR TOC - CORRECT SELECTORS FOR SIDEBAR-ITEM-TEXT */
+
 
 /* Left sidebar regular links */
 .sidebar .sidebar-item-text.sidebar-link,
@@ -234,7 +238,8 @@ nav[role="doc-toc"] .nav-link:hover {
   text-decoration: underline !important;
 }
 
-/* Replace "Table of contents" with "Content" in bold - LEFT SIDEBAR 
+/* Replace "Table of contents" with "Content" in bold - LEFT SIDEBAR */
+
 .sidebar-header h1.title,
 .sidebar .sidebar-title,
 .sidebar h2.sidebar-title,
@@ -243,8 +248,10 @@ nav[role="doc-toc"] .nav-link:hover {
   font-size: 1.25rem !important;
 }
 
-.sidebar-header h1.title::before,
-.sidebar .sidebar-title::before,
+.sidebar-header h1.title::before{
+  visibility: hidden;
+},
+
 .sidebar h2.sidebar-title::before {
   content: "Content";
   visibility: visible;
@@ -254,31 +261,19 @@ nav[role="doc-toc"] .nav-link:hover {
   font-weight: 700;
   color: var(--text-dark);
 }
+
+
+
+
+/* Hide or display chpater title ie the first header from the qmd content 
+It need to be commented out in single pages documents*/
+
+.chapter-title {
+  visibility: hidden;
+  position: relative;
+}
 */
 
-.sidebar-header h1.title,
-.sidebar .sidebar-title,
-.sidebar h2.sidebar-title {
-  visibility: hidden;
-  position: relative;
-}
-
-/* Replace "On this page" in RIGHT SIDEBAR if needed */
-
-#toc-title {
-  visibility: hidden;
-  position: relative;
-}
-
-#toc-title::before {
-  content: "Content";
-  visibility: visible;
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-weight: 700;
-  color: var(--text-dark);
-}
 
 /* Code blocks */
 pre.sourceCode {
