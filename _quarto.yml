@@ -50,20 +50,22 @@ book:                                       ### Book specific formating
 
 ### Below are option for a sidebar on the left hand side of the page 
 ### They include an accessibility compliant UK Data Service logo
-  sidebar: 
+  sidebar:
+    title: " "
     style: "floating"
     search: true
     logo: pics/UKDS_Logos_Col_Grey_300dpi.png
     logo-href: https://ukdataservice.ac.uk/
     logo-alt: "UK Data Service Logo and link to website"
 
+
 ### Options required by each output format ie html, pedf, etc
 format:
   html:
-    css: ukds_long.css                      ### custom stylesheet
     toc: true                               ### include a table of content...
-    toc-location: left                     ### ... on the right of the page
-    toc-depth: 2                            ### Number of levels of TOC shown
+    toc-title: "Contents" 
+    toc-location: left                      ### ... on the right of the page
+    toc-depth: 2                           ### Number of levels of TOC shown
     number-sections: false                  ### No automatic numbering. Change as necessary
     code-fold: false                        ### Whether syntax block is folded (hidden) by default
     fig-cap-location: top                   ### Figure titles/captions at the top 
@@ -76,6 +78,8 @@ format:
     link-external-newwindow: true
     citations-hover: true
     footnotes-hover: true
+    css: ukds_single_page.css                      ### custom stylesheet
+
 #   embed-resources: true                  ### Embed everything in the final html file - sometimes easier when sharing
   
 
